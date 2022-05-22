@@ -6,6 +6,32 @@ $(".lazyestload").unveil(0,function() {
     });
 });
 
+    $(".houses").owlCarousel({
+        autoplay:false,
+        loop:true,
+        margin:25,
+        dots: true,
+        nav:false,
+        responsiveClass:true,
+        responsive:{
+            0:{
+                items:1,
+            },
+            650:{
+                items:2.5,
+                nav:false,
+            },
+            768:{
+                items:2,
+                nav:false,
+            },
+            1000:{
+                items:4.5,
+                nav:false,
+            }
+        }
+    });
+
 
     (function(){
         // Responsive Tabbed Navigation - by CodyHouse.co
