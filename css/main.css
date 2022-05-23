@@ -299,8 +299,8 @@ h1 span {
 .inside-pages .chat {
     position: fixed;
     right: 11px;
-    top: 285px;
-    /* bottom: -1px; */
+    top: 235px;
+    /* bottom: 31px; */
     z-index: 99999999;
 }
 
