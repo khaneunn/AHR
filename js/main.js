@@ -1,12 +1,64 @@
 $(document).ready(function(){
 
+    /*--- SCROLLING ---*/
+    var $header = $('header');
+    var offset = 100;
+
+    $(window).scroll(function(){
+        if ($(this).scrollTop() > offset ) {
+            $header.addClass('scrolling');
+        } else {
+            $header.removeClass('scrolling');
+        }
+    });
+
+
+    /*--- Mobile Menu ---*/
+    $('.menu-icon').bind('touchstart mousedown', function(e){
+        $(".mobile-nav li").removeClass("open");
+        $(".sub-nav").slideUp(200);
+        $("body").toggleClass("menu-open");
+        if($("body").hasClass("search-open")){
+            $("body").removeClass("search-open");
+        }
+        return false;
+    });
+
+    $(".has-children .toggle").click(function(e) {
+        var sub_nav = $(this).closest("li").children(".sub-nav");
+        if(sub_nav.is(':visible'))
+        {
+            $(this).closest("li").removeClass("open");
+            sub_nav.slideUp(200);
+        }
+        else
+        {
+            $(".mobile-nav li").removeClass("open");
+            $(this).closest("li").addClass("open");
+            $(".sub-nav").slideUp(200);
+            sub_nav.slideDown(200);
+        }
+
+        return false;
+
+    });
+
+    $("#content_mask, .menu-close").bind('touchstart mousedown', function(e){
+        $(window).scrollTop(0);
+        $(".mobile-nav li").removeClass("open");
+        $(".sub-nav").slideUp(200);
+        $("body").removeClass("menu-open search-open");
+        return false;
+    });
+
+
 $(".lazyestload").unveil(0,function() {
     $(this).on('load', function() {
         $(this).removeClass('lazyestload');
     });
 });
 
-    $(".houses").owlCarousel({
+$(".houses").owlCarousel({
         autoplay:false,
         loop:true,
         margin:25,
@@ -15,14 +67,14 @@ $(".lazyestload").unveil(0,function() {
         responsiveClass:true,
         responsive:{
             0:{
-                items:1,
+                items:2,
             },
             650:{
-                items:2.5,
+                items:3.5,
                 nav:false,
             },
             768:{
-                items:2,
+                items:3.5,
                 nav:false,
             },
             1000:{
